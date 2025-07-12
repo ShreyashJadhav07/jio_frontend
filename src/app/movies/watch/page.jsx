@@ -1,5 +1,4 @@
-
-import WishlistButton from "@/components/atom/WIshListButton";
+import WishlistButton from "@/components/atom/WishListButton";
 import { buttonVariants } from "@/components/ui/button";
 import { api, ENDPOINT } from "@/lib/api";
 import { FilmIcon } from "lucide-react";
