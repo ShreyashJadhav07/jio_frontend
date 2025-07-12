@@ -1,0 +1,112 @@
+"use client";
+
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+
+
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import Link from "next/link";
+import { api, ENDPOINT } from "@/lib/api";
+import { LucideLoader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { userLoggedInDetails } from "@/redux/userSlice";
+import { toast } from "sonner";
+
+export default function LoginPage() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState("");
+    const router=useRouter();
+    const dispatch = useDispatch();
+ 
+
+
+    const onSubmit = async () => {
+        try {
+            if (!email || !password) {
+                toast("Please fill the fields");
+                return;
+            }
+            setLoading(true);
+            const res = await api.post(ENDPOINT.login, {
+                email: email,
+                password: password,
+            });
+            if (res.data.status === "success") {
+                dispatch(userLoggedInDetails(res.data.user));
+                toast("Logged in successfully!");
+          
+                // router.push("/");
+            }
+        } catch (err) {
+            console.log("err: ", err.response.data.message);
+            
+        } finally {
+            setLoading(false);
+
+        }
+    };
+
+    return (
+        <div className="h-screen flex items-center justify-center">
+            <Card className="w-full max-w-sm bg-black text-white border-red-500">
+                <CardHeader>
+                    <CardTitle className="text-2xl">Login</CardTitle>
+                    <CardDescription className="text-amber-50">
+                        Enter your email below to login to your account.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-4 bg-black text-white">
+                    <div className="flex flex-col gap-2">
+                        <Label htmlFor="email">Email</Label>
+                        <Input
+                            id="email"
+                            type="email"
+                            placeholder="m@example.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                             className="text-black"
+                            
+                        />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <Label htmlFor="password">Password</Label>
+                        <Input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            className="text-black"
+                        />
+                    </div>
+                </CardContent>
+                <CardFooter>
+                    <Button onClick={onSubmit} className="w-full cursor-pointer " >
+                        Sign in  {loading && <LucideLoader2 className="animate-spin ml-2 w-4 h-4" />}
+                    </Button>
+                </CardFooter>
+                <div className="mt-4 text-center text-sm pb-6 flex justify-between px-6">
+                    <Link href="/resetPassword">Forgot Password?</Link>
+                    <div>
+                        Need an account?{" "}
+                        <Link href="/signup" className="underline">
+                            Sign Up
+                        </Link>
+                    </div>
+                </div>
+            </Card>
+        </div>
+    );
+}
