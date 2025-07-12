@@ -1,5 +1,4 @@
 "use client";
-
 import { buttonVariants } from '@/components/ui/button';
 import { API_BASE_URL } from '@/lib/api';
 import { cn } from '@/lib/utils';
@@ -7,13 +6,12 @@ import { FolderLockIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { useSelector } from "react-redux";
-import { useSearchParams } from 'next/navigation'; 
 
-function WatchJio() {
-    const searchParams = useSearchParams(); 
-    const videoId = searchParams.get("id"); 
+
+function WatchJio({ searchParams }) {
+    const videoId = searchParams.id;
     const userData = useSelector((state) => state.user);
-
+  
     if (!userData.isLoggedIn) {
         return (
             <div className="flex flex-col items-center justify-center h-screen w-full gap-4">
@@ -34,6 +32,7 @@ function WatchJio() {
         );
     }
 
+
     if (!userData.user?.isPremium) {
         return (
             <div className="h-screen w-screen flex justify-center items-center text-white bg-black text-xl flex-col gap-6">
@@ -45,6 +44,7 @@ function WatchJio() {
         );
     }
 
+
     return (
         <video
             src={API_BASE_URL + `/video/watch/?id=${videoId}`}
@@ -52,9 +52,10 @@ function WatchJio() {
             autoPlay
             muted
             className="w-screen h-screen"
+          
             crossOrigin="anonymous"
         />
     );
 }
 
-export default WatchJio;
+export default WatchJio

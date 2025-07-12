@@ -18,7 +18,7 @@ import Link from "next/link";
 import { api, ENDPOINT } from "@/lib/api";
 import { LucideLoader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLoggedInDetails } from "@/redux/userSlice";
 import { toast } from "sonner";
 
@@ -28,6 +28,11 @@ export default function LoginPage() {
     const [loading, setLoading] = useState("");
     const router=useRouter();
     const dispatch = useDispatch();
+    const userData = useSelector((state) => state.user);
+        if (userData.isLoggedIn) {
+        return router.push("/");
+        }
+        
  
 
 
@@ -46,10 +51,11 @@ export default function LoginPage() {
                 dispatch(userLoggedInDetails(res.data.user));
                 toast("Logged in successfully!");
           
-                // router.push("/");
+                router.push("/");
             }
         } catch (err) {
             console.log("err: ", err.response.data.message);
+             toast("Invalid creds");
             
         } finally {
             setLoading(false);

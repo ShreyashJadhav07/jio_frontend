@@ -54,7 +54,7 @@ export default function LoginForm() {
                 dispatch(userLoggedInDetails(res.data.user));
                     
                 toast("Account Created!");
-                // router.push("/");
+                router.push("/");
             } else {
                 console.log("message:", res.data?.message);
                 toast(res.data?.message || "Signup failed");
