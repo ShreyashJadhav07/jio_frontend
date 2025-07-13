@@ -62,6 +62,7 @@ export default async function JioPlusPage() {
                                alt={video.name || `Video ${video.id}`}
                                fill
                                className="object-cover"
+                               unoptimized
                            />
                            
                            {/* Play Button Overlay */}
