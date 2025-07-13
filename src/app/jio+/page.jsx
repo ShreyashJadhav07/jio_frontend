@@ -35,11 +35,10 @@
 //     );
 // }
 
+import { api, ENDPOINT } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { PlayCircleIcon } from "lucide-react";
-import { api } from "@/path/to/your/api";
-import { ENDPOINT } from "@/path/to/your/endpoints";
 
 export default async function JioPlusPage() {
    const videos = (await api.get(ENDPOINT.fetchAllStreamingVideos)).data?.data;
@@ -54,27 +53,11 @@ export default async function JioPlusPage() {
                    <Link
                        key={index}
                        href={`/jio+/watch?id=${video.id}`}
-                       className="relative group"
+                       className="relative flex items-center justify-center"
                    >
-                       <div className="min-w-[200px] h-[300px] rounded-lg overflow-hidden relative">
-                           {/* Thumbnail Image */}
-                           <img 
-                               src={`/${index + 1}.jpg`} 
-                               alt={video.name || `Video ${video.id}`}
-                               className="w-full h-full object-cover"
-                           />
-                           
-                           {/* Play Button Overlay */}
-                           <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                               <PlayCircleIcon className="w-16 h-16 text-white drop-shadow-lg" />
-                           </div>
-                           
-                           {/* Title Overlay */}
-                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
-                               <p className="text-white text-sm font-medium line-clamp-2">
-                                   {video.name || video.id}
-                               </p>
-                           </div>
+                       <div className="min-w-[200px] h-[300px] rounded-lg bg-gray-800 flex flex-col items-center justify-center text-white">
+                           <PlayCircleIcon className="w-16 h-16 mb-4" />
+                           <p className="text-center px-4">{video.name || video.id}</p>
                        </div>
                    </Link>
                ))}
