@@ -28,6 +28,10 @@ export default function LoginPage() {
     const [loading, setLoading] = useState("");
     const router=useRouter();
     const dispatch = useDispatch();
+    const userData = useSelector((state) => state.user);
+    if(userData.isLoggedIn) {
+       return  router.push("/");
+    }
    
         
  
