@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import "./globals.css";
 import JioCinemaHeader from "@/components/section/Header";
 import Footer from "@/components/section/Footer";
