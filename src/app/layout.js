@@ -6,7 +6,6 @@ import {Inter} from "next/font/google";
 const inter = Inter({ subsets: ["latin"]});
 import StoreProvider from "@/providers/storeProvider";
 import { Toaster } from "@/components/ui/sonner";
-import AuthProvider from "@/providers/AuthProvider";
 
 
 
@@ -25,19 +24,16 @@ export default function RootLayout({ children }) {
       >
        
         <StoreProvider>
-          <AuthProvider>
-                
-        <JioCinemaHeader />
-        {children}
-        <Footer/>
-        <Toaster/>
-
-          </AuthProvider>
+          
          
         
     
         
-      
+          
+        <JioCinemaHeader />
+        {children}
+        <Footer/>
+        <Toaster/>
       
      
       
