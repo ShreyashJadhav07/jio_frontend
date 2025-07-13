@@ -37,8 +37,9 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import Image from "next/image";
 import { PlayCircleIcon } from "lucide-react";
+import { api } from "@/path/to/your/api";
+import { ENDPOINT } from "@/path/to/your/endpoints";
 
 export default async function JioPlusPage() {
    const videos = (await api.get(ENDPOINT.fetchAllStreamingVideos)).data?.data;
@@ -57,12 +58,10 @@ export default async function JioPlusPage() {
                    >
                        <div className="min-w-[200px] h-[300px] rounded-lg overflow-hidden relative">
                            {/* Thumbnail Image */}
-                           <Image 
+                           <img 
                                src={`/${index + 1}.jpg`} 
                                alt={video.name || `Video ${video.id}`}
-                               fill
-                               className="object-cover"
-                               unoptimized
+                               className="w-full h-full object-cover"
                            />
                            
                            {/* Play Button Overlay */}
