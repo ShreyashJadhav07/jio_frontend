@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 import { api, ENDPOINT } from "@/lib/api";
 import { toast } from "sonner";
 
-const WishlistButton = ({ wishlist }) => {
+const WishListButton = ({ wishlist }) => {
     const user = useSelector((state) => state.user);
     const [loading, setLoading] = useState(false);
     
@@ -49,4 +49,4 @@ const WishlistButton = ({ wishlist }) => {
     );
 };
 
-export default WishlistButton;
+export default WishListButton;

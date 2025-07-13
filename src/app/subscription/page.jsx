@@ -18,7 +18,7 @@ const offers = [
         features: [
             "Ad-Free (except sports & live)",
             "Includes all Premium content",
-            "Any 1 device at a time (up to Asli 4K quality)",
+            "Any 1 device at a time (up to Real 4K quality)",
             "Download and watch anytime"
         ],
         price: "29",
@@ -106,16 +106,16 @@ function Subscription() {
         }
     }
     return (
-        <div className="h-screen mt-[74px] w-full">
+        <div className="min-h-screen mt-[74px] w-full relative">
             <Image
                 src="/motu-patlu.png"
                 alt="Background Image"
                 fill={true}
                 quality={100}
-                className="-z-50 hidden md:block object-fit"
+                className="-z-50 hidden md:block object-cover"
             />
 
-            <div className="mx-auto p-4 md:pt-8 pt-4">
+            <div className="mx-auto p-4 md:pt-8 pt-4 min-h-[calc(100vh-74px)] flex flex-col">
                 <div className="flex items-center justify-between md:mb-8 ">
                     <Link
                         href="/"
@@ -128,12 +128,12 @@ function Subscription() {
                 <Image
                     src="/motu-patlu.png"
                     alt="Background Image"
-                    className="w-full md:hidden rounded-lg mb-4 h-[100px] object-fit"
+                    className="w-full md:hidden rounded-lg mb-4 h-[100px] object-cover"
                     width={359}
                     height={60}
                 />
 
-                <div className="md:mx-16">
+                <div className="md:mx-16 flex-1 flex flex-col justify-center">
                     <h1 className="md:text-4xl text-2xl  leading-none font-black md:text-12 mb-4 text-nowrap">
                         JioCinema Premium
                     </h1>
@@ -158,7 +158,7 @@ function Subscription() {
                         ))}
                     </div>
                     <button
-                        className="bg-pink-600 p-3 md:mt-10 item-start flex font-medium rounded-lg ml-2 cursor-pointer"
+                        className="bg-pink-600 p-4 mt-4 item-start flex font-medium rounded-lg ml-2 cursor-pointer w-fit"
                         onClick={handlePaymentClick}
                     >
                         Continue & Pay
