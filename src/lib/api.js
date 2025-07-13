@@ -46,7 +46,8 @@ export const ENDPOINT = {
     // streaming urls
     fetchAllStreamingVideos: `/video`,
     fetchStreamingVideo: (id) => `/video?id=${id}`,
-    fetchVideoThumbnail: (id) => `/video/thumbnail?videoId=${id}`,
+    // fetchVideoThumbnail: (id) => `/video/thumbnail?videoId=${id}`,
+    fetchVideoThumbnail: (id) => `/video/thumbnail?id=${id}`,
 
 
 
