@@ -24,9 +24,9 @@ const WishlistButton = ({ wishlist }) => {
                 toast("Added to wishlist successfully!");
             }
         } catch (err) {
-            console.error("Error adding to wishlist:", err); // Debug log
+            console.error("Error adding to wishlist:", err); 
             
-            // Show more specific error messages
+           
             if (err.response?.data?.message) {
                 toast(`Failed to add to wishlist: ${err.response.data.message}`);
             } else {

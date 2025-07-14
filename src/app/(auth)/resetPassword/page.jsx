@@ -33,7 +33,7 @@ function ResetPassword() {
     const handleForgetPassword = async () => {
         setLoading(true);
         try {
-            const res = await api.patch(ENDPOINT.forgetpassword, { email });
+            const res = await api.patch(ENDPOINT.forgetPassword, { email });
             if (res.data.status === "success") {
               toast("OTP sent successfully!");
               

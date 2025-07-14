@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+
 import WishlistButton from "@/components/atom/WishListButton";
 import { buttonVariants } from "@/components/ui/button";
 import { api, ENDPOINT } from "@/lib/api";
@@ -33,7 +33,7 @@ const page = async ({ searchParams: { id,poster_path } }) => {
                     </div>
                 </>
             ) : (
-                // show error
+                
                 <div className="w-full h-[60vh] flex flex-col gap-4 items-center justify-center text-slate-400">
                     <FilmIcon className="w-[100px] h-[100px]" />
                     <p>Uh Oh! Video is unavailable.</p>

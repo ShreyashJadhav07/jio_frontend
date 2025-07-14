@@ -1,17 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  
-    trailingSlash: true,
-    images:{
+    images: {
         remotePatterns: [
             {
-                hostname: "image.tmdb.org"
+                hostname:"image.tmdb.org"
             },
             {
-                hostname: "localhost",
-            }
+                hostname:"localhost"
+
+            },
         ]
     }
+
 };
 
 export default nextConfig;

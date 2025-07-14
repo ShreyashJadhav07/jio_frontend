@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+
 import BannerSection from "@/components/section/BannerSection";
 import CategoriesSection from "@/components/section/CategoriesSection";
 import JumperSection from "@/components/section/Jumper";

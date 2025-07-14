@@ -7,7 +7,7 @@ export const ENDPOINT = {
     // logout , user pending
     user: "/user",
     logout: "/auth/logout",
-    forgetpassword: "/auth/forgetpassword",
+    forgetPassword: "/auth/forgetPassword",
     resetPassword: "/auth/resetPassword",
 
     //discover
